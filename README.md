@@ -3,7 +3,7 @@ Software til Teknologi
 
 | Name | Session | Description |
 |:------------ |:-------:|:------------ |
-| ACID-1 | Concurrency and Transactions | Database transaction benchmarker |
+| ACID | Concurrency and Transactions | Database transaction benchmarker |
 | Cars-Dapper | Object Relational Mapping (ORM) | Prelude to CarAPI. Use Dapper and AI to seed DB |
 | CarAPI-1 | REST 1 | Adding the apiV1/Cars HttpGET action |
 | CarAPI-2 | REST 1 | Adding the additional apiV2/Cars/AA 12345 HttpGET action<br>Adding the apiV1/Cars HttpPOST action |
