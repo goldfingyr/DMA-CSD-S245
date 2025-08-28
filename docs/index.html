@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DMA-CSD-S245</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px auto;
+      }
+      th, td {
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: left;
+        height: 60px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      /* First table: vertical-align middle */
+      #tableMiddle td {
+        vertical-align: middle;
+      }
+      /* Second table: vertical-align top */
+      #tableTop td {
+        vertical-align: top;
+		background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Technology 3nd semester</h1>
+    <div class="row">
+      <div class="col">
+        <table id="tableTop" class="table">
+          <tr>
+            <td>
+              Teacher:
+            </td>
+            <td style="padding-left: 5px; padding-right: 5px; border:2px;">
+              <strong>Karsten Jeppesen, <a ref="mailto:kaje@ucn.dk">kaje@ucn.dk</a></strong>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              ECTS:
+            </td>
+            <td style="padding-left: 5px; padding-right: 5px;">
+              <strong>10</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Repository:
+            </td>
+            <td style="padding-left: 5px; padding-right: 5px;">
+              <a href="https://github.com/goldfingyr/DMA-CSD-S245">https://github.com/goldfingyr/DMA-CSD-S245</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h3>Session plan</h3>
+    <div class="row">
+      <div class="col">
+        <table id="tableMiddle" class="table table-striped">
+          <thead>
+            <tr>
+              <th style="background-color:lemonchiffon;">Session</th>
+              <th style="background-color:lemonchiffon;">Title</th>
+              <th style="background-color:lemonchiffon;">Subjects</th>
+              <th style="background-color:lemonchiffon;">Materials</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+  <script>
+    // Content of each row
+    const rowContent = [
+      [
+	    "#1",
+	    "<b>Architecture and Patterns</b>", 
+		" \
+		  <ul> \
+           <li>Architecture</li> \
+           <li> \
+             Designing distributed systems<br> \
+             <ul> \
+               <li>Infrastructure</li> \
+               <li>System- and Software Architecture</li> \
+               <li>Common Architectural Patterns</li> \
+             </ul> \
+           </li> \
+           <li>Security Considerations</li> \
+         </ul> \
+        ", 
+		" \
+              <ul> \
+                <li>Chapters 1 and 2 (Coulouris, et al., 2012)</li> \
+                <li><a href=\"https://youtu.be/DngAZyWMGR0\">https://youtu.be/DngAZyWMGR0</a></li> \
+                <li><a href=\"https://dzone.com/articles/software-architecture-the-5-patterns-you-need-to-k\">https://dzone.com/articles/software-architecture-the-5-patterns-you-need-to-k</a></li> \
+                <li><a href=\"https://www.dofactory.com/net/builder-design-pattern\">https://www.dofactory.com/net/builder-design-pattern</a></li> \
+              </ul> \
+		", 
+      ],
+      [
+	    "#2", 
+		"<b>Network 1</b>", 
+		" \
+              Definitions \
+              <ul> \
+                <li>The OSI Model.</li> \
+                <li>The TCP/IP Model</li> \
+                <li>Network Protocols</li> \
+                <ul> \
+                  <li>HTTP(S), FTP, WebDAV</li> \
+                  <li>Request, response, HTTP verbs</li> \
+                </ul> \
+              </ul> \
+		", 
+		" \
+              <ul> \
+                <li>Install postman beforehand.</li> \
+                <li>Chapter 16 (Deitel, et al.)</li> \
+                <li>Focus on section 16.4 through 16.8 and skim the rest.</li> \
+                <li>HTTP Messages - HTTP | MDN (mozilla.org)</li> \
+              </ul> \
+		"
+      ],
+      [
+	    "#3", 
+		"<b>Network 2</b>", 
+		" \
+              <ul> \
+                <li>Organization</li> \
+                <ul> \
+                  <li>Infrastructure, DHCP</li> \
+                  <li>Ad Hoc, ZeroConf, mDNS</li> \
+                </ul> \
+                <li>Domain Name system</li> \
+                <ul> \
+                  <li>Creating the world</li> \
+                  <li>Routing</li> \
+                  <li>Naming</li> \
+                  <li>Resolving</li> \
+                </ul> \
+              </ul> \
+		", 
+		""
+      ],
+      [
+	    "#4", 
+		"<b>Network 3</b>", 
+		" \
+              <ul> \
+                <li>IT-Lab</li> \
+                <li>The Machine that goes PING</li> \
+                <ul> \
+                  <li>Protocol analysis</li> \
+                  <li>API analysis</li> \
+                  <li>API consumption</li> \
+                  </ul> \
+              </ul> \
+		", 
+		""
+      ],
+      [
+	    "#5", 
+		"<b>Concurrency and Transactions</b>", 
+		" \
+              <ul> \
+                <li>ACID</li> \
+                <li>Isolation levels</li> \
+                <li>SQL</li> \
+                <li>OCC vs PCC</li> \
+              </ul> \
+		", 
+		" \
+              <ul> \
+                <li>Chapters16 and 17 (Coulouris, et al., 2012)</li> \
+              </ul> \
+		"
+      ],
+      [
+	    "#6", 
+		"<b>Network 4</b>", 
+		" \
+              <ul> \
+                <li>Berkeley Sockets</li> \
+                <ul> \
+                  <li> \
+                    Multiproject Client-Server \
+                  </li> \
+                </ul> \
+                <li>SignalR</li> \
+                <ul> \
+                  <li> \
+                    Chat application \
+                  </li> \
+                </ul> \
+              </ul> \
+		", 
+		" \
+              <ul> \
+                <li><a href=\"https://dotnet.microsoft.com/en-us/apps/aspnet/signalr\">https://dotnet.microsoft.com/en-us/apps/aspnet/signalr</a></li> \
+              </ul> \
+		"
+      ],
+      [
+	    "#7", 
+		"<b>Object Relational Mapping (ORM)</b>", 
+		" \
+             <ul> \
+                <li>Dapper.</li> \
+                <li>EF for Database First</li> \
+              </ul> \
+		", 
+		" \
+              Follow the Introduction/tutorial here: <br> \
+              <ul> \
+                <li><a href=\"https://dapper-tutorial.net/dapper\">https://dapper-tutorial.net/dapper</a></li> \
+              </ul> \
+		"
+      ],
+      [
+	    "#8", 
+		"<b>REST 1</b>", 
+		" \
+              <ul> \
+                <li>Understanding REST</li> \
+                <ul> \
+                  <li>HATEOAS</li> \
+                  <li>Statelessness</li> \
+                  <li>Response Codes</li> \
+                  <li>Data Formats</li> \
+                </ul> \
+              </ul> \
+		", 
+		" \
+              <ul> \
+                <li>Fielding Chapter 5</li> \
+                <li>PDF: <a href=\"https://restfulapi.net/https://restfulapi.net/rest-architectural-constraints/https://restfulapi.net/resource-naming/\">https://restfulapi.net/https://restfulapi.net/rest-architectural-constraints/https://restfulapi.net/resource-naming/</a></li> \
+              </ul> \
+		"
+      ],
+      [
+	    "#9", 
+		"<b>REST 2</b>", 
+		" \
+              <ul> \
+                <li>API</li> \
+                <li>Razor</li> \
+                <li>Bootstrap</li> \
+                <li>Docker Desktop</li> \
+              </ul> \
+		", 
+		""
+      ],
+      [
+	    "#10", 
+		"<b>Data Security and Cryptography</b>", 
+		" \
+              <ul> \
+                <li>Public/Private Keys</li> \
+                <li> \
+                  REST Api Security<br> \
+                  <ul> \
+                    <li>User authentication and authorization</li> \
+                  </ul> \
+                </li> \
+                <li>OAuth/OpenID</li> \
+              </ul> \
+		", 
+		" \
+              <ul> \
+                <li>Chapter 19 (Deitel, et al., u.d.)</li> \
+              </ul> \
+		"
+      ],
+      [
+	    "#11", 
+		"<b>Virtualization</b>", 
+		" \
+              <ul> \
+                <li>UCN Server Structure</li> \
+                <li>Docker Vagrant</li> \
+                <li>Reverse proxy</li> \
+                <li>Mixed environments</li> \
+              </ul> \
+		", 
+		""
+      ],
+      [
+	    "#12", 
+		"<b>Internet Security</b>", 
+		" \
+              <ul> \
+                <li>Threats and Preventive Measures</li> \
+                <li> \
+                  OWASP Top Ten \
+                  <ul> \
+                    <li>Injection</li> \
+                    <li>Broken Authentication</li> \
+                  </ul> \
+                </li> \
+                <li>Cross Site Scripting</li> \
+                <li>Network design</li> \
+                <ul> \
+                  <li>Private Networks</li> \
+                  <li>VPN</li> \
+                  <li>Firewall</li> \
+                </ul> \
+              </ul> \
+		", 
+		" \
+              <ul> \
+                <li><a href=\"https://owasp.org/Top10/\">OWASP Top Ten</a></li> \
+              </ul> \
+		"
+      ],
+      [
+	    "#13", 
+		"<b>Programming Distributed Systems</b>", 
+		" \
+              <ul> \
+                <li>Firewalls</li> \
+                <li>VPN</li> \
+                <li>VNC</li> \
+                <li>Secure Network Design</li> \
+                <li>OAUTH2 authentication/authorization</li> \
+                <li>Wrap up and repetition, Questions, Exam preparation</li> \
+              </ul> \
+		", 
+		""
+      ]
+    ];
+
+    // Desired order of rows (by index)
+    const rowOrder = [0, 1, 2, 6, 4, 7, 8, 3, 5, 9, 10, 11, 12]; // You can change this to reorder rows
+
+    function renderTable(tableId, content, order) {
+      const tbody = document.querySelector(`#${tableId} tbody`);
+      tbody.innerHTML = "";
+      order.forEach(index => {
+        const row = content[index];
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.innerHTML = cell; // Use innerHTML to render HTML content
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    renderTable("tableMiddle", rowContent, rowOrder);
+  </script>
+      </div>
+    <div class="row">
+      <div class="col">
+        <h3>Literature</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="background-color:lemonchiffon;">Reference</th>
+              <th style="background-color:lemonchiffon;">Book</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              [Stallings]
+            </td>
+            <td>
+              William Stallings,<br>
+              Operating Systems - Internals and Design Principles,<br>
+              Eighth Edition, Pearson Global Edition,<br>
+              ISBN-13: 978-1-292-06135-1
+            </td>
+          </tr>
+          <tr>
+            <td>
+              [Deitel]
+            </td>
+            <td>
+              Deitel, Deitel and Choffnes,<br>
+              Operating Systems,<br>
+              Third Edition, International Edition, Pearson - Printice Hall,<br>
+              ISBN: 0-13-124696-8
+            </td>
+          </tr>
+          <tr>
+            <td>
+              [Coulouris]
+            </td>
+            <td>
+              Coulouris et al.<br>
+              Distributed Systems - Concept and Design,<br>
+              Addison-Wesley Publishing Company,<br>
+              ISBN 0-321-26354-5
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <strong>
+          PDFs of the relevant excerpts of Coulouris and Deitel will be made available online.<br>
+          Some sessions will use online sources and lecture notes; these will be announced later.
+        </strong>
+        <br>
+        <br>
+        <strong>
+          Studying at UCN<br>
+        </strong>
+        <a href="https://ucndk.sharepoint.com/sites/Studyinfo-Rules/SiteAssets/Forms/AllItems.aspx?id=%2Fsites%2FStudyinfo%2DRules%2FSiteAssets%2FSitePages%2FRules%2Dof%2Dconduct%2FGuidelines%2Dfor%2Dstudent%2Dbehaviour%2Dat%2DUCN%2DLong%2Epdf&parent=%2Fsites%2FStudyinfo%2DRules%2FSiteAssets%2FSitePages%2FRules%2Dof%2Dconduct">Read this leaflet</a>
+      </div>
+    </div>
+  </body>
+</html>
