@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en">
+  <!--  CHANGE RREPOSITORY LINK IN LINE 62 -->
+  <!--  CHANGE SESSION ORDER SEARCH FOR: const rowOrder -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DMA-CSD-S245</title>
+    <title>Technology Course Schedule</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
       table {
@@ -81,6 +83,9 @@
           <tbody></tbody>
         </table>
   <script>
+    // Desired order of rows (by index)
+    const rowOrder = [0, 1, 2, 6, 4, 7, 8, 3, 5, 9, 10, 11, 12]; // You can change this to reorder rows
+
     // Content of each row
     const rowContent = [
       [
@@ -192,17 +197,16 @@
 		"<b>Network 4</b>", 
 		" \
               <ul> \
-                <li>Berkeley Sockets</li> \
-                <ul> \
-                  <li> \
-                    Multiproject Client-Server \
-                  </li> \
-                </ul> \
                 <li>SignalR</li> \
                 <ul> \
                   <li> \
                     Chat application \
                   </li> \
+                </ul> \
+                <li>CI/CD</li> \
+                <ul> \
+                  <li> Mechanics </li> \
+                  <li> Application </li> \
                 </ul> \
               </ul> \
 		", 
@@ -305,7 +309,7 @@
                 <li> \
                   OWASP Top Ten \
                   <ul> \
-                    <li>Injection</li> \
+                    <li>SQL Injection</li> \
                     <li>Broken Authentication</li> \
                   </ul> \
                 </li> \
@@ -315,6 +319,11 @@
                   <li>Private Networks</li> \
                   <li>VPN</li> \
                   <li>Firewall</li> \
+                </ul> \
+                <li>Prompt injection</li> \
+                <ul> \
+                  <li>Mechanics</li> \
+                  <li>Application</li> \
                 </ul> \
               </ul> \
 		", 
@@ -340,9 +349,6 @@
 		""
       ]
     ];
-
-    // Desired order of rows (by index)
-    const rowOrder = [0, 1, 2, 6, 4, 7, 8, 3, 5, 9, 10, 11, 12]; // You can change this to reorder rows
 
     function renderTable(tableId, content, order) {
       const tbody = document.querySelector(`#${tableId} tbody`);
