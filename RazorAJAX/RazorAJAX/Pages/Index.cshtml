@@ -1,0 +1,110 @@
+﻿@page
+@model IndexModel
+@Html.AntiForgeryToken()
+@{
+    ViewData["Title"] = "RazorAJAX";
+}
+
+<div class="container-fluid">
+    <div class="row" style="background-color: gold">
+        <div class="col-12" style="background-color: gold">
+            <h1>AJAX Test - @Model.secondaryName </h1>
+        </div>
+    </div>
+    <div class="row" style="background-color: gold">
+        <div class="col-12" style="background-color: gold">
+            <div id="MyCounter">Loading</div>
+        </div>
+    </div> 
+    <div class="row" style="background-color: gold">
+        <div class="col-12" style="background-color: gold">
+            <div id="CurrentTime">Loading</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        function Ajaxfunction1() {
+            document.getElementById("MyCounter").innerHTML="Call Home";
+            $.ajax({
+                type: "POST",
+                url: "?handler=MyAjaxHandler1",
+                headers: {
+                    "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+                },
+                data: { data: "@Model.counter" },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("XSRF-TOKEN",
+                    $('input:hidden[name="__RequestVerificationToken"]').val());
+                },
+                dataType: "json",
+                success: function (response) {
+                    var vStr = response.result.split(';');
+                    console.log("GetState: [" + response.result + "] 0:[" + vStr[0] + "] 1:[" + vStr[1] + "]");
+                    $('#MyCounter').html("Counter= "+vStr[0]);
+                }
+            });
+        }
+
+        function Ajaxfunction2() {
+            $.ajax({
+                type: "POST",
+                url: "?handler=MyAjaxHandler2",
+                headers: {
+                    "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+                },
+                data: { data: "@Model.counter" },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("XSRF-TOKEN",
+                    $('input:hidden[name="__RequestVerificationToken"]').val());
+                },
+                dataType: "json",
+                success: function (response) {
+                    var vStr = response.result.split(';');
+                    console.log("GetState: [" + response.result + "] 0:[" + vStr[0] + "] 1:[" + vStr[1] + "]");
+                    $('#CurrentTime').html("Time= "+vStr[0]);
+                }
+            });
+        }
+
+        function Ajaxfunction3() {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            fetch("?handler=MyAjaxHandler2", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                    "RequestVerificationToken": token,
+                    "XSRF-TOKEN": token
+                },
+                body: new URLSearchParams({
+                    data: "@Model.counter"
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok " + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const vStr = data.result.split(';');
+                console.log(`GetState: [${data.result}] 0:[${vStr[0]}] 1:[${vStr[1]}]`);
+                document.getElementById("CurrentTime").innerHTML = "Time= " + vStr[0];
+            })
+            .catch(error => {
+                console.error("Fetch error:", error);
+            });
+        }
+
+        function functionInterval() {
+            Ajaxfunction1();
+            Ajaxfunction3();
+        }
+
+        setInterval(functionInterval, 2000);
+
+    </script>
+}
